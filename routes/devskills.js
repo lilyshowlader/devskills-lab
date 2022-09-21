@@ -1,12 +1,14 @@
 import { Router } from 'express'
+import * as devskillsCtrl from '../controllers/devskills.js'
 
 const router = Router()
 
-/* GET users listing. */
-router.get('/', function(req, res) {
-  res.send('respond with a resource')
-})
+/* GET devskills listing. */
+router.get('/', devskillsCtrl.index)
+
 
 export {
   router
 }
+
+
