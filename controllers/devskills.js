@@ -1,6 +1,5 @@
-// import { devskills } from '../data/devskills.js'
-
 import { Devskill } from '../models/devskill.js'
+// importing from model
 
 function index(req, res) {
   Devskill.find({})
