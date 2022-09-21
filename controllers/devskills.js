@@ -14,8 +14,12 @@ function index(req, res) {
   })
 }
 
-// you can use a console.log ("this is working") to see if this is working
+// below is the newdevskills function which will allow users to add a new skill
+function newDevSkill(req, res) {
+  res.render('devskills/new')
+}
 
 export {
-	index
+	index,
+  newDevSkill as new
 }
