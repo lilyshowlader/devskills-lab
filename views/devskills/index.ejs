@@ -11,7 +11,8 @@
   <ul>
     <% devskills.forEach(devskill => { %>
       <li>
-				<%= devskill.skill %> 
+				<a href="/devskills/<%= devskill._id %>">
+          <%= devskill.skill %></a>
 				- 
 				<%= devskill.level ? 'struggle' : 'doing okay' %>
 			</li>

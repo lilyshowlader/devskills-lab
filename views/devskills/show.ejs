@@ -7,10 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-    <h1>New Skill</h1>
-    <form action="/devskills" method="POST" autocomplete="off">
-      <input type="text" name="skill">
-      <button type="submit">Save New Skill</button>
-    </form>
+  <h1>DevSkills</h1>
+  <h2>DevSkill #<%= devskill._id %></h2>
+  <h3><%= devskill.skill %></h3>
+  <p>Complete: <%= devskill.level ? 'struggle' : 'doing okay' %></p>
+	<a href="/devskills">Go back</a>
+  
 </body>
 </html>
