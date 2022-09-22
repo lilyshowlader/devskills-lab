@@ -4,6 +4,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 // Connect to the database with Mongoose
 import './config/database.js'
 
@@ -21,6 +22,14 @@ app.set(
 )
 app.set('view engine', 'ejs')
 
+// custom middleware
+// the middleware below allows us to add a time on our index page
+app.use(function(req, res, next) {
+  req.time = new Date().toLocaleTimeString()
+  next()
+})
+
+
 // middleware
 app.use(logger('dev'))
 app.use(express.json())
@@ -30,6 +39,9 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(methodOverride('_method')) 
+// above 
+// html only knows about get and post request but our server needs to be able to know about put/patch or delete request. Our server needs to know we can use one of these methods. We are going to use the method override middleware to help our server understand 
 
 // mounted routers
 app.use('/', indexRouter)

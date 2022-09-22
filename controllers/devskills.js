@@ -2,11 +2,13 @@ import { Devskill } from '../models/devskill.js'
 // importing from model
 
 // the function below displays all the skills http://localhost:3000/devskills
+// we added time: req.time
 function index(req, res) {
   Devskill.find({})
   .then(devskills => { // todos represents the result of the query, in this case ALL todos
     res.render('devskills/index', {
       devskills: devskills,
+      time: req.time
     })
   })
   .catch(error => { // If there's an error, console.log it and redirect back home!
@@ -24,9 +26,9 @@ function newDevSkill(req, res) {
 // the function below using mongoose method model.create or Devskill.create allows the user to create & post the new skill
 // devskills.create is creating the skill
 // the devskill on line 30, represents the newly created dev skill.
-
+// req.body -> connects to new ejs name="skill"
 function create(req, res) {
-  console.log(req.body)
+  console.log("this is submitted form data:", req.body)
   Devskill.create(req.body)
   .then(devskill => {
 		// Notice we are doing a redirect here!
