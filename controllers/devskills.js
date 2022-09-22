@@ -54,13 +54,25 @@ function show(req, res) {
   })
 }
 
+// the function below uses the mongoose method findbyidanddelete and allows the user to delete a skill
+function deleteDevskill(req, res) {
+  Devskill.findByIdAndDelete(req.params.id)
+  .then(devskill => {
+    res.redirect('/devskills')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/devskills')
+  })
+}
 
 
 export {
 	index,
   newDevSkill as new,
   create,
-  show
+  show,
+  deleteDevskill as delete
 }
 
 // notice how each of these functions have been imported. 

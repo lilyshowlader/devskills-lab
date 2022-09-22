@@ -4,19 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>DevSkills</title>
 </head>
 <body>
   <h1>DevSkills as of <%= time %></h1>
-  <ul>
-    <% devskills.forEach(devskill => { %>
-      <li>
-				<a href="/devskills/<%= devskill._id %>">
-          <%= devskill.skill %></a>
-				- 
-				<%= devskill.level ? 'struggle' : 'doing okay' %>
-			</li>
-    <% }) %>
+    <ul>
+      <% devskills.forEach(devskill => { %>
+        <li>
+          <form 
+          action="/devskills/<%= devskill._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+          >
+            <button type="submit">X</button>
+          </form>
+          <a href="/devskills/<%= devskill._id %>"><%= devskill.skill %></a>
+          - 
+          <%= devskill.level ? 'struggle' : 'doing okay' %>
+        </li>
+      <% }) %>
   </ul>
   <a href="/devskills/new">Add a Skill</a>
 </body>

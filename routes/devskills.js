@@ -4,6 +4,9 @@ import * as devskillsCtrl from '../controllers/devskills.js'
 
 const router = Router()
 
+// the base URL for any route in this file is localhost3000/devskills - anything after is an add on
+// we know what the base is bcus of what is in server.js 
+
 /* GET devskills listing. */
 router.get('/', devskillsCtrl.index)
 
@@ -15,6 +18,9 @@ router.get('/:id', devskillsCtrl.show)
 
 // the route below will create a new post (skill)
 router.post('/', devskillsCtrl.create)
+
+// the route below will delete a skill
+router.delete('/:id', devskillsCtrl.delete)
 
 export {
   router
